@@ -1,0 +1,1 @@
+Best Parameters: {'num_epochs': 62, 'gen_hidden_dim': 447, 'disc_hidden_dim': 365, 'gen_lr': 0.00038592444637358675, 'disc_lr': 0.00474175516976875, 'gen_beta1': 0.0008878067093097246, 'disc_beta1': 0.8453021569800112}
