@@ -67,7 +67,7 @@ class CategoricalGenerator(nn.Module):
             nn.Dropout(0.5),
             ResidualLayer(hidden_dim, hidden_dim),
             nn.Linear(hidden_dim, output_dim),
-            nn.Sigmoid()
+            nn.Softmax(dim = 1)
         )
 
     def forward(self, noise, labels):
@@ -124,7 +124,7 @@ class Discriminator(nn.Module):
             nn.Dropout(0.5),
             ResidualLayer(hidden_dim, hidden_dim),
             nn.Linear(hidden_dim, 1),
-            nn.Sigmoid()
+            nn.Softmax(dim = 1)
         )
 
     def forward(self, data, labels):
@@ -181,7 +181,7 @@ def bayesian_optimization_cgan(train_loader, device, noise_dim, label_dim, num_n
         return -gloss
 
     search_space = [
-        Integer(50, 100),
+        Integer(64, 128),
         Integer(128, 512),
         Integer(128, 512),
         Real(1e-5, 1e-1, prior="log-uniform"),
